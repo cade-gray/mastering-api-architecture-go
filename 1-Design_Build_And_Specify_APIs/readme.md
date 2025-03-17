@@ -17,7 +17,7 @@ https://grpc.io/docs/what-is-grpc/core-concepts
 - Uses protocol buffers (Google's open source mechanism for serializing structured data)
 - Define strucure for data you want to serialize in .proto file
 
-```
+```bash
 message Person {
   string name = 1;
   int32 id = 2;
@@ -29,7 +29,7 @@ message Person {
 - These provide simple accessors for each field, like name() and set_name(), as well as methods to serialize/parse the whole structure to/from raw bytes.
 - So, for instance, if your chosen language is C++, running the compiler on the example above will generate a class called Person. You can then use this class in your application to populate, serialize, and retrieve Person protocol buffer messages.
 
-```
+```bash
 // The greeter service definition.
 service Greeter {
   // Sends a greeting
@@ -114,3 +114,14 @@ Access to metadata is language dependent.
 
 A gRPC channel provides a connection to a gRPC server on a specified host and port. It is used when creating a client stub. Clients can specify channel arguments to modify gRPC’s default behavior, such as switching message compression on or off. A channel has state, including connected and idle.
 How gRPC deals with closing a channel is language dependent. Some languages also permit querying channel state.
+
+#### gRPC Go Quick Start
+
+Cloned from repo, added function, and regenerated code.
+Update client and server code to send message.
+
+```bash
+protoc --go_out=. --go_opt=paths=source_relative \
+    --go-grpc_out=. --go-grpc_opt=paths=source_relative \
+    helloworld/helloworld.proto
+```
